@@ -9,6 +9,21 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent" />
 
+
+    <AutoCompleteTextView
+        android:id="@+id/search_poi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:popupBackground="@android:color/holo_green_light"
+        android:text="请输入目的地址" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="150dp"
+        android:id="@+id/search_poi_button"
+        android:background="@drawable/btn_map_poi"
+        android:text="开始搜索"/>
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
