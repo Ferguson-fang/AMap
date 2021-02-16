@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.amap.api.maps.MapView
         android:id="@+id/map"
@@ -15,11 +17,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:popupBackground="@android:color/holo_green_light"
-        android:text="请输入目的地址" />
+        android:hint="请输入目的地址"
+        android:layout_marginLeft="70dp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="150dp"
+        android:layout_marginLeft="220dp"
         android:id="@+id/search_poi_button"
         android:background="@drawable/btn_map_poi"
         android:text="开始搜索"/>
@@ -33,7 +36,7 @@
             android:layout_width="65dp"
             android:layout_height="32dp"
             android:id="@+id/basicmap"
-            android:text="标准地图"
+            android:text="标准"
             android:gravity="center"
             android:background="@drawable/btn_map_poi"
             android:textSize="12sp"
@@ -46,7 +49,7 @@
             android:background="@drawable/btn_map_poi"
             android:textColor="@color/black"
             android:textSize="12sp"
-            android:text="卫星地图"/>
+            android:text="卫星"/>
         <Button
             android:id="@+id/nightmap"
             android:layout_width="65dp"
@@ -55,7 +58,7 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:textSize="12sp"
-            android:text="夜间模式"/>
+            android:text="夜间"/>
         <Button
             android:id="@+id/navimap"
             android:layout_width="65dp"
@@ -64,10 +67,7 @@
             android:textColor="@color/black"
             android:gravity="center"
             android:textSize="12sp"
-            android:text="导航模式"/>
-
-
-
+            android:text="导航"/>
 
     </LinearLayout>
 

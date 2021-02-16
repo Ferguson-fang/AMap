@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">MapDemo</string>
+    <string name="show_heat_map_tip">单击热力区域可以获取热力值</string>
+    <string name="report_time">发布时间</string>
+    <string name="weather_live">实时</string>
+    <string name="weather_forecast">预报</string>
+    <string name="no_result">对不起，没有搜索到相关数据！</string>
 </resources>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="30dp"
+    >
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login"
+        android:background="#00000000"
+        android:drawableLeft="@drawable/user_login"
+        android:text="点击登录"
+        android:textSize="35sp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/dingdan"
+        android:background="#00000000"
+        android:drawableTop="@drawable/dingdan_button"
+        android:text="订单"
+        android:textSize="20sp"
+        android:layout_below="@+id/login"
+        android:layout_marginTop="40dp"/>
+
+    <Button
+        android:id="@+id/qianbao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:drawableTop="@drawable/qianbao_button"
+        android:text="钱包"
+        android:textSize="20sp"
+        android:layout_below="@+id/login"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="125dp"
+        />
+
+    <Button
+        android:id="@+id/kajuan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:drawableTop="@drawable/kajuan_button"
+        android:text="卡卷"
+        android:textSize="20sp"
+        android:layout_below="@+id/login"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="250dp"
+        />
+
+
+</RelativeLayout>
