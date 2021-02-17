@@ -39,6 +39,7 @@ public class WeatherSearchActivity extends AppCompatActivity implements WeatherS
     private EditText city_weather_search;
     private Button start_city_search;
 
+
     /**
     *设置城市搜索
     *
@@ -52,8 +53,8 @@ public class WeatherSearchActivity extends AppCompatActivity implements WeatherS
         searchforcastsweather();
     }
     private void init() {
-        TextView city = findViewById(R.id.city);
-        city.setText(cityname);
+        //TextView city = findViewById(R.id.city);
+        //city.setText(cityname);
         forecasttv = findViewById(R.id.forecast);
         reporttime1 = findViewById(R.id.reporttime1);
         reporttime2 = findViewById(R.id.reporttime2);
@@ -72,6 +73,9 @@ public class WeatherSearchActivity extends AppCompatActivity implements WeatherS
         switch (v.getId()){
             case R.id.start_city_search:
                 cityname = city_weather_search.getText().toString();
+                searchforcastsweather();
+                searchliveweather();
+
                 break;
         }
 

@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.mapdemo.basic.BasicFragmentActivity;
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private Button login_problem;
     private EditText yongHu;
@@ -42,6 +44,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             case R.id.click_login:
                 Toast.makeText(LoginActivity.this,"登入成功",
                         Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(LoginActivity.this, BasicFragmentActivity.class);
+                startActivity(intent);
                 break;
         }
     }

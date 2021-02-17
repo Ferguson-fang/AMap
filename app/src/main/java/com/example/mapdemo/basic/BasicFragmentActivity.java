@@ -350,8 +350,8 @@ public class BasicFragmentActivity extends AppCompatActivity implements View.OnC
 
     }
 
-
-    //
+    /*
+    //向确定的经纬度添加一个标记，因为之前设置的定位小蓝点，因此此标记可以不用。
     private  void addMarkerToMap(double latitude,double longitude)
     {
         selfMaker=aMap.addMarker(new MarkerOptions().position(new LatLng(latitude
@@ -359,7 +359,7 @@ public class BasicFragmentActivity extends AppCompatActivity implements View.OnC
                                     .decodeResource(getResources()
                                        , R.drawable.location_marker))));
     }
-
+    */
     //
     protected  void doSearchPOI(){
         search_poi_button.setOnClickListener(new View.OnClickListener() {
@@ -396,8 +396,8 @@ public class BasicFragmentActivity extends AppCompatActivity implements View.OnC
                                     "latitude ="+poiItem.getLatLonPoint().getLatitude()+
                                     "longitude ="+poiItem.getLatLonPoint().getLongitude());
                             //给标记点画坐标
-                            addMarkerToMap(poiItem.getLatLonPoint().getLatitude(),
-                                    poiItem.getLatLonPoint().getLongitude());
+                            //addMarkerToMap(poiItem.getLatLonPoint().getLatitude(),
+                            //        poiItem.getLatLonPoint().getLongitude());
 
                             //默认第一个兴趣点为我们的坐标点
                             endPoint = new com.amap.api.services.core.LatLonPoint(poiItem.getLatLonPoint().
@@ -456,11 +456,11 @@ public class BasicFragmentActivity extends AppCompatActivity implements View.OnC
                         Date date = new Date(aMapLocation.getTime());
                         df.format(date);
 
-                        if(isAddSelfMaker == false){
+                        //if(isAddSelfMaker == false){
                             //在此位置添加一个标记
-                            addMarkerToMap(aMapLocation.getLatitude(),aMapLocation.getLongitude());
-                            isAddSelfMaker = true;
-                        }
+                        //    addMarkerToMap(aMapLocation.getLatitude(),aMapLocation.getLongitude());
+                        //    isAddSelfMaker = true;
+                        //}
 
                         if(startPoint == null){
                             //得到起始坐标
