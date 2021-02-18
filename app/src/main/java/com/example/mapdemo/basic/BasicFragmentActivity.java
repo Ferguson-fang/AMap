@@ -571,6 +571,8 @@ public class BasicFragmentActivity extends AppCompatActivity implements View.OnC
             case R.id.navimap:
                 aMap.setMapType(AMap.MAP_TYPE_NAVI);
                 break;
+
+
         }
     }
 
@@ -586,6 +588,7 @@ public class BasicFragmentActivity extends AppCompatActivity implements View.OnC
             case R.id.bottom_menu_home:
                 Toast.makeText(BasicFragmentActivity.this,"进入首页",
                         Toast.LENGTH_SHORT).show();
+                aMap.clear();
                 break;
             case R.id.bottom_menu_found:
                 Toast.makeText(BasicFragmentActivity.this,"进入天气",
@@ -593,7 +596,6 @@ public class BasicFragmentActivity extends AppCompatActivity implements View.OnC
                 Intent intent = new Intent(BasicFragmentActivity.
                         this, WeatherSearchActivity.class);
                 startActivity(intent);
-
                 break;
             case R.id.bottom_menu_message:
                 Toast.makeText(BasicFragmentActivity.this,"进入我的",
@@ -602,6 +604,7 @@ public class BasicFragmentActivity extends AppCompatActivity implements View.OnC
                         this, SelfCenterActivity.class);
                 startActivity(intent1);
                 break;
+
         }
         return super.onOptionsItemSelected(item);
     }
