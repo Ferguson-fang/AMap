@@ -571,8 +571,6 @@ public class BasicFragmentActivity extends AppCompatActivity implements View.OnC
             case R.id.navimap:
                 aMap.setMapType(AMap.MAP_TYPE_NAVI);
                 break;
-
-
         }
     }
 

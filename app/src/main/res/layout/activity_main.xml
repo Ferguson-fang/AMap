@@ -3,47 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/begin_logo"
     >
-
-    <ImageView
-        android:id="@+id/gaode"
-        android:layout_width="323dp"
-        android:layout_height="273dp"
-        android:layout_centerInParent="true"
-        android:src="@drawable/gaode" />
-
-    <ImageView
-        android:id="@+id/road"
-        android:layout_width="236dp"
-        android:layout_height="219dp"
-        android:layout_alignBottom="@+id/gaode"
-
-
-        android:layout_marginBottom="-139dp"
-        android:src="@drawable/road" />
-
-    <ImageView
-        android:id="@+id/compass"
-        android:layout_width="346dp"
-        android:layout_height="321dp"
-        android:layout_alignBottom="@+id/gaode"
-        android:layout_marginBottom="155dp"
-        android:src="@drawable/compass" />
-
-    <ImageView
-        android:id="@+id/amap"
-        android:layout_width="232dp"
-        android:layout_height="97dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="250dp"
-        android:layout_marginBottom="103dp"
-        android:src="@drawable/amap" />
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/start"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="点击进入高德地图"/>
+        android:text="点击进入高德地图"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/btn_map_poi"/>
 
 </RelativeLayout>

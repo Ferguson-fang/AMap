@@ -21,7 +21,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MapDemo"
         android:usesCleartextTraffic="true">
-        <activity android:name="weather.WeatherSearchActivity"></activity>
+        <activity android:name="weather.WeatherSearchActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".SelfCenterActivity" />
         <activity android:name=".basic.BasicFragmentActivity" />
