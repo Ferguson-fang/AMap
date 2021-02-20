@@ -2,12 +2,17 @@ package weather;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.PatternMatcher;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.alibaba.mit.alitts.ICallback;
 import com.amap.api.services.core.AMapException;
 import com.amap.api.services.weather.LocalDayWeatherForecast;
 import com.amap.api.services.weather.LocalWeatherForecast;
@@ -16,10 +21,20 @@ import com.amap.api.services.weather.LocalWeatherLive;
 import com.amap.api.services.weather.LocalWeatherLiveResult;
 import com.amap.api.services.weather.WeatherSearch;
 import com.amap.api.services.weather.WeatherSearchQuery;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.model.stream.HttpUriLoader;
 import com.example.mapdemo.R;
 import com.example.mapdemo.util.ToastUtil;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
 import java.util.List;
+
+import kotlin.reflect.KCallable;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class WeatherSearchActivity extends AppCompatActivity implements WeatherSearch.OnWeatherSearchListener, View.OnClickListener {
 
@@ -30,6 +45,7 @@ public class WeatherSearchActivity extends AppCompatActivity implements WeatherS
     private TextView Temperature;
     private TextView wind;
     private TextView humidity;
+    private ImageView bingPicImg;
     private WeatherSearchQuery mquery;
     private WeatherSearch mweathersearch;
     private LocalWeatherLive weatherlive;
@@ -51,6 +67,15 @@ public class WeatherSearchActivity extends AppCompatActivity implements WeatherS
         init();
         searchliveweather();
         searchforcastsweather();
+        loadBingPic();
+
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String bingPic = prefs.getString("bing_pic",null);
+        if(bingPic != null){
+            Glide.with(this).load(bingPic).into(bingPicImg);
+        }else{
+            loadBingPic();
+        }
     }
     private void init() {
         //TextView city = findViewById(R.id.city);
@@ -64,8 +89,11 @@ public class WeatherSearchActivity extends AppCompatActivity implements WeatherS
         humidity =  findViewById(R.id.humidity);
         city_weather_search = findViewById(R.id.city_weather_search);
         start_city_search = findViewById(R.id.start_city_search);
+        bingPicImg = findViewById(R.id.bing_pic_img);
 
         start_city_search.setOnClickListener(this);
+
+
     }
 
     @Override
@@ -188,4 +216,31 @@ public class WeatherSearchActivity extends AppCompatActivity implements WeatherS
     }
 
 
+    private void loadBingPic() {
+        String requestBingPic = " http://guolin.tech/api/bing_pic";
+        HttpUtil.sendOkHttpRequest(requestBingPic, new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                final String bingPic = response.body().string();
+                SharedPreferences.Editor editor = PreferenceManager.
+                        getDefaultSharedPreferences(WeatherSearchActivity.this).edit();
+                editor.putString("bing_pic",bingPic);
+                editor.apply();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Glide.with(WeatherSearchActivity.this).load(bingPic).into
+                                (bingPicImg);
+                    }
+                });
+            }
+        });
+
+
+    }
 }
