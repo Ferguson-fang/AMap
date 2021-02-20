@@ -2,9 +2,7 @@
 本工程为高德地图Android SDK 3D版本和高德定位Android SDK的Demo，基于AMap3DMap_7.8.0_AMapNavi_7.8.0_AMapSearch_7.7.0_AMapTrack_1.3.0_AMapLocation_5.2.0整合版本SDK
 
 ## 前述：
-- [高德官方网站申请key](https://developer.amap.com/api/android-location-sdk/guide/create-project/get-key)
-
-- 阅读[参考手册](https://a.amap.com/lbs/static/unzip/Android_Map_Doc/index.html)
+- API 传送门：[高德官方网站申请key](https://developer.amap.com/api/android-location-sdk/guide/create-project/get-key)
 
 ## 包含的功能点
 
