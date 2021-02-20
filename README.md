@@ -13,6 +13,7 @@
 - 标准，卫星，夜间，导航四种模式的地图的切换与显示
 - poi兴趣点的搜索以及路径绘制
 - 天气查询
+- 天气查询背景图每日更新
 - 账号登入UI
 
 ## 效果图如下：
@@ -29,6 +30,8 @@
 ![天气查询](https://github.com/Ferguson-fang/AMap/blob/main/app/image/weather_search.gif)
 
 ![账号登入UI](https://github.com/Ferguson-fang/AMap/blob/main/app/image/login.gif)
+
+![天气查询背景图](https://github.com/Ferguson-fang/AMap/blob/main/app/image/weaather_background.gif)
 
 # 方法实现
 ### 地图显示
@@ -298,6 +301,69 @@ if (aMap == null) {
         }
     }
 
+```
+### 每日一图
+修改activity_weather_search中的代码
+```xml
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/bing_pic_img"
+        android:scaleType="centerCrop"/>
+        
+    <...
+         
+</FrameLayout>
+```
+修改WeatherSearchActivity中的代码
+```java
+@Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_weather_search);
+        ...
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String bingPic = prefs.getString("bing_pic",null);
+        if(bingPic != null){
+            Glide.with(this).load(bingPic).into(bingPicImg);
+        }else{
+            loadBingPic();
+        }
+    }
+        
+        
+private void loadBingPic() {
+        String requestBingPic = " http://guolin.tech/api/bing_pic";
+        HttpUtil.sendOkHttpRequest(requestBingPic, new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                final String bingPic = response.body().string();
+                SharedPreferences.Editor editor = PreferenceManager.
+                        getDefaultSharedPreferences(WeatherSearchActivity.this).edit();
+                editor.putString("bing_pic",bingPic);
+                editor.apply();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Glide.with(WeatherSearchActivity.this).load(bingPic).into
+                                (bingPicImg);
+                    }
+                });
+            }
+        });
+
+
+    }
 ```
 
 # 待提升的地方
